@@ -1,0 +1,83 @@
+ESP 8266 imp cmds
+
+Basic
+AT
+AT+RST
+AT+RESTORE
+AT+GMR
+
+As Server Mode
+AT+CWMODE=3
+AT+CIPMUX=1
+AT+CIPSERVER=1,80
+AT+CIPSEND=0,21
+<h1>HELLO WORLD!</h1>
+AT+CIPCLOSE=0
+AT+CWSAP="MY_Wifi_SubStation","1234567890",5,3
+
+
+As Client Mode
+AT+CWMODE=1	,	AT+CWMODE=3	
+AT+CIPMUX=1
+AT+CWLAP
+AT+CWJAP="jeet_2x","ganeshaabc123"
+AT+CIPSTART=1,"TCP","192.168.4.1",80
+
+AT+CIPSTART=1,"TCP","www.jts-demo.000webhostapp.com/demo.php",80
+AT+CIPSEND=1,15
+AT+CIFSR
+AT+CIPSTATUS
+AT+PING="192.168.4.1"   ,  AT+PING="AI-THINKER_XYZ"
+
+
+jts-demo.000webhostapp.com
+
+1.) Reset Module
+AT+RST\r\n
+
+2.) Join Access Point (Internet Router)
+AT+CWJAP="jeet_2x","ganeshaabc123"\r\n
+
+3.) Connec to website
+AT+CIPSTART=1,"TCP","jts-demo.000webhostapp.com",80\r\n
+
+4.) Specify number of bytes you'll send
+
+AT+CIPSEND=84\r\n
+
+AT+CIPSEND=154\r\n
+
+
+5.) Send GET Request
+
+GET /receiver.php?apples=56&oranges=23 HTTP/1.1\r\nHost: jts-demo.000webhostapp.com\r\n\r\n
+
+5.) send POST Request
+POST /receiver.php HTTP/1.1\r\nHost: esp8266.allaboutee.com\r\nContent-Type: application/x-www-form-urlencoded\r\nContent-Length: 20\r\n\r\napples=12&oranges=45\r\n\r\n
+
+
+AT+CIPCLOSE=0
+
+
+
+AT+CWMODE=3
+
+OK
+AT+CIPMUX=1
+
+OK
+AT+CIPSERVER=1,1234
+no change
+
+OK
+AT+CWLAP
++CWLAP:(3,"jeet_2x",-68,"80:1f:02:f1:89:74",2,-22,0)
++CWLAP:(2,"JTS_MTNL",-49,"0c:d2:b5:2d:a7:34",6,25,0)
++CWLAP:(3,"Jeet",-62,"84:c9:b2:e8:1e:4e",11,21,0)
++CWLAP:(2,"D LINK2",-88,"c4:12:f5:51:27:68",11,41,0)
+
+OK
+0,CONNECT
+
++IPD,0,7:SUCCESS
+

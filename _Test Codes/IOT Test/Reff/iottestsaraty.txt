@@ -1,0 +1,19 @@
+ http://sarathy.shiksha/1055/receive.php?LN:=2&LON:=77.3699&LAT:=2.7890 
+ 
+ AT
+AT+CMGF=1
+AT+CGATT=1
+AT+CIPCSGP=1,"WWW"
+AT+CSTT
+AT+CIICR
+AT+CIFSR
+AT+CIPSPRT=1
+AT+CIPHEAD=1
+AT+CIPSTART="TCP","sarathy.shiksha/1055","80"
+AT+CIPSTART="TCP","sarathy.shiksha/1055","80"
+AT+CIPSTART="TCP","sarathy.shiksha/1055","80"
+
+
+
+GET /receiver.php?LN:=1584&LAT:=895&LON:=59854 HTTP/1.1\r\nHost: jts-demo.000webhostapp.com\r\n
+

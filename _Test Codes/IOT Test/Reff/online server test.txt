@@ -1,0 +1,74 @@
+valid
+AT+CWMODE=3
+
+
+OK
+AT+CIPMUX=1
+
+
+OK
+AT+CWLAP
+
++CWLAP:(3,"jeet_2x",-58,"80:1f:02:f1:89:74",1)
++CWLAP:(3,"Moto G (4) 9255",-49,"cc:61:e5:26:e3:21",8)
++CWLAP:(0,"Moto G (4) 5165",-68,"cc:61:e5:bb:9a:f4",9)
++CWLAP:(3,"Jeet",-52,"84:c9:b2:e8:1e:4e",11)
+
+OK
+AT+CIPSERVER=1,80
+
+
+OK
+AT+CWJAP="jeet_2x","ganeshaabc123"
+
+WIFI DISCONNECT
++CWJAP:1
+
+FAIL
+AT+CWJAP="jeet_2x","ganeshaabc123"
+
++CWJAP:1
+
+FAIL
+AT+CWJAP="Jeet","ganeshaabc123"  
+
+
+ERROR
+AT+CWJAP="Jeet","ganeshaabc123"
+
+WIFI CONNECTED
+WIFI GOT IP
+
+OK
+AT+CIPSERVER=1,80
+
+no change
+
+OK
+WIFI DISCONNECT
+WIFI CONNECTED
+WIFI GOT IP
+at
+
+
+OK
+AT+CIFSR
+
++CIFSR:APIP,"192.168.4.1"
++CIFSR:APMAC,"5e:cf:7f:a3:b7:c8"
++CIFSR:STAIP,"192.168.0.118"
++CIFSR:STAMAC,"5c:cf:7f:a3:b7:c8"
+
+OK
+WIFI DISCONNECT
+WIFI CONNECTED
+WIFI GOT IP
+0,CONNECT
+
++IPD,0,21:ÿûÿû ÿûÿû'ÿýÿûÿý
++IPD,0,1:g
++IPD,0,2:
+
++IPD,0,1:q
++IPD,0,2:
+0,CLOSED

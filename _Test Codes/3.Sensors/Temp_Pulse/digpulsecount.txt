@@ -1,0 +1,25 @@
+
+void Dig_Pulse_Sence(void)
+{ 
+    if(digitalRead(PULSESENSOR_DIG) == 1)
+    { if(flag == 0)
+      { flag = 1;
+        one_min_count++;
+        Serial.println(pulse_counter,DEC);
+        pulse_counter = 0;
+      }
+    }
+    else flag = 0;
+    
+    pulse_counter++;
+    delay(1);
+
+    mil_min_counter++;
+    if(mil_min_counter > 15*1000)
+    {   mil_min_counter = 0;
+        Serial.print("15 sec : ");
+        Serial.println(one_min_count,DEC);  
+        one_min_count = 0;
+        delay(3000);
+    }
+}

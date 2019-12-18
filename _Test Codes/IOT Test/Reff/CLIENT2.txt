@@ -1,0 +1,80 @@
+AT+CWMODE=3
+
+
+OK
+AT+CIPMUX=1
+
+
+OK
+AT+CWLAP
+
++CWLAP:(3,"MY_Wifi_SubStation",-5,"a2:20:a6:07:4c:1c",5,-14,0)
++CWLAP:(2,"JTS_MTNL",-39,"0c:d2:b5:2d:a7:34",6,8,0)
++CWLAP:(3,"jeet_2x",-56,"80:1f:02:f1:89:74",8,-41,0)
++CWLAP:(0,"HP-Print-15-LaserJet 1102",-50,"40:b8:9a:2e:3e:15",11,5,0)
++CWLAP:(3,"Jeet",-48,"84:c9:b2:e8:1e:4e",11,6,0)
+
+OK
+AT+CWJAP="MY_Wifi_SubStation","1234567890"
+
+WIFI CONNECTED
+WIFI GOT IP
+
+OK
+AT+CIPSTART=1,"TCP","MY_Wifi_SubStation",80
+
+DNS Fail
+
+ERROR
+AT+CIPSTART=1,"TCP","192.168.4.1",80
+
+1,CONNECT
+
+OK
+AT+CIPSEND=1,15
+
+
+OK
+> ....................
+
+busy s...
+
+Recv 15 bytes
+
+SEND OK
+ÿ1,CLOSED
+WIFI DISCONNECT
+WIFI CONNECTED
+WIFI GOT IP
+AT+CIPSTART=1,"TCP","192.168.4.1",80
+
+1,CONNECT
+
+OK
+
++IPD,1,21:<h1>HELLO WORLD!</h1>1,CLOSED
+AT+CIPSTART=1,"TCP","192.168.4.1",80
+
+1,CONNECT
+
+OK
+AT+CIPSEND=0,21
+
+link is not valid
+
+ERROR
+AT+CIPSEND=1,15
+
+
+OK
+> !</h1>
+
+busy s...
+
+Recv 15 bytes
+
+SEND OK
+1,CLOSED
+WIFI DISCONNECT
+WIFI CONNECTED
+WIFI GOT IP
