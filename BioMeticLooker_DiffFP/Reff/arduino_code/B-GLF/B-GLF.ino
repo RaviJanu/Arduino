@@ -1,0 +1,81 @@
+#include <FPS_GT511C3.h>
+#include <SoftwareSerial.h>
+#include <LiquidCrystal.h>
+
+FPS_GT511C3 fps(8, 9);
+
+LiquidCrystal lcd(2, 3, 4, 5, 6, 7);
+
+const int relay = A0;      // the number of the pushbutton pin
+int k;
+
+
+int enrollid;
+
+void setup()
+{
+        
+        pinMode(relay, OUTPUT);
+	Serial.begin(9600);
+        lcd.begin(16,2);
+	delay(100);
+	fps.Open();
+	fps.SetLED(true);
+         lcd.setCursor(2,0);
+         lcd.print("Coffee maker"); 
+         
+         lcd.setCursor(0,1);
+         lcd.print("using Biometric");
+         
+         delay(2000);
+         
+         lcd.clear();
+ }
+ 
+ void loop()
+{
+  lcd.setCursor(1,0);
+  lcd.print("Insert Finger");
+  if (fps.IsPressFinger())
+	{
+		fps.CaptureFinger(false);
+		int id = fps.Identify1_N();
+		if (id <200)
+		{       lcd.clear();
+			lcd.setCursor(1,1);
+                        lcd.print("Verified ID:");//Serial.print("Verified ID:");
+			lcd.print(id);//Serial.println(id);
+                        digitalWrite(relay,HIGH);
+                        delay(2000);
+                        //lcd.clear();
+                        lcd.setCursor(3,0);
+                        lcd.print("Machine:On");
+                        Serial.println(id);
+                        delay(8000);
+                        digitalWrite(relay,LOW);
+                        lcd.setCursor(3,0);
+                        lcd.print("Machine:Off");
+                        delay(1000);
+		}
+		else
+		{       lcd.clear();
+			lcd.setCursor(0,1);
+                        lcd.print("Finger not found");//Serial.print("Verified ID:");
+			//Serial.println("Finger not found");
+                        delay(2000);
+                        lcd.clear();
+		}
+	}
+	else
+	{        lcd.clear();
+		//Serial.println("Please press finger");
+                lcd.setCursor(1,0);
+                lcd.print("Insert Finger");
+                delay(2000);
+                lcd.clear();
+	}
+	delay(100);
+  
+}
+
+
